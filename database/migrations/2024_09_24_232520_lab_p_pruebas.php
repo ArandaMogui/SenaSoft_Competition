@@ -22,7 +22,7 @@ return new class extends Migration
             $table->boolean('habilita')->default(true); 
             $table->timestamps(); 
             $table->foreign('id_procedimiento')->references('id')->on('lab_p_procedimientos')->onDelete('cascade');
-            $table->foreign('id_tipo_resultado')->references('id')->on('gen_p_lista_opcion')->onDelete('cascade');
+            $table->foreign('id_tipo_resultado')->references('id')->on('gen_p_lista_opciones')->onDelete('cascade');
 
         });
     }

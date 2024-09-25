@@ -22,8 +22,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property $created_at
  * @property $updated_at
  *
- * @property GenPListaOpcion $genPListaOpcion
- * @property GenPListaOpcion $genPListaOpcion
+ * @property GenPListaOpcione $genPListaOpcione
+ * @property GenPListaOpcione $genPListaOpcione
+ * @property FacMTarjetero[] $facMTarjeteros
+ * @property FacPProfesionale[] $facPProfesionales
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
@@ -43,17 +45,33 @@ class GenMPersona extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function genPListaOpcion()
+    public function genPListaOpcione()
     {
-        return $this->belongsTo(\App\Models\GenPListaOpcion::class, 'id_sexobiologico', 'id');
+        return $this->belongsTo(\App\Models\GenPListaOpcione::class, 'id_sexobiologico', 'id');
     }
     
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function genPListaOpcion()
+    public function genPListaOpcione()
     {
-        return $this->belongsTo(\App\Models\GenPListaOpcion::class, 'id_tipoid', 'id');
+        return $this->belongsTo(\App\Models\GenPListaOpcione::class, 'id_tipoid', 'id');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function facMTarjeteros()
+    {
+        return $this->hasMany(\App\Models\FacMTarjetero::class, 'id', 'id_persona');
+    }
+    
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function facPProfesionales()
+    {
+        return $this->hasMany(\App\Models\FacPProfesionale::class, 'id', 'id_persona');
     }
     
 }

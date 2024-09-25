@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('lab_m_orden', function (Blueprint $table) {
+        Schema::create('lab_m_ordenes', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->bigIncrements('id'); 
             $table->unsignedBigInteger('id_documento')->nullable(); 
@@ -21,9 +21,9 @@ return new class extends Migration
             $table->unsignedBigInteger('id_historia')->nullable(); 
             $table->boolean('profesional_externo')->default(false); 
             $table->timestamps(); 
-            $table->foreign('id_documento')->references('id')->on('gen_p_documento')->onDelete('set null');
-            $table->foreign('id_historia')->references('id')->on('fac_m_tarjetero')->onDelete('set null');
-            $table->foreign('id_profesional_ordena')->references('id')->on('fac_p_profesional')->onDelete('set null');
+            $table->foreign('id_documento')->references('id')->on('gen_p_documentos')->onDelete('set null');
+            $table->foreign('id_historia')->references('id')->on('fac_m_tarjeteros')->onDelete('set null');
+            $table->foreign('id_profesional_ordena')->references('id')->on('fac_p_profesionales')->onDelete('set null');
 
         });
     }

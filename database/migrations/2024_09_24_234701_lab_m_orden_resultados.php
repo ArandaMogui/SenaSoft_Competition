@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('res_memo', 2500)->nullable(); 
             $table->integer('num_procesamientos')->nullable(); 
             $table->timestamps(); 
-            $table->foreign('id_orden')->references('id')->on('lab_m_orden')->onDelete('cascade');
+            $table->foreign('id_orden')->references('id')->on('lab_m_ordenes')->onDelete('cascade');
             $table->foreign('id_procedimiento')->references('id')->on('lab_p_procedimientos')->onDelete('cascade');
             $table->foreign('id_prueba')->references('id')->on('lab_p_pruebas')->onDelete('cascade');
             $table->foreign('id_pruebaopcion')->references('id')->on('lab_p_pruebas_opciones')->onDelete('set null');
