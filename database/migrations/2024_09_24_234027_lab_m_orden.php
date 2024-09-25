@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_profesional_ordena')->nullable(); 
             $table->decimal('orden', 10, 0); 
             $table->timestamp('fecha'); 
-            $table->integer('id_historia')->nullable()->index(); 
+            $table->unsignedBigInteger('id_historia')->nullable(); 
             $table->boolean('profesional_externo')->default(false); 
             $table->timestamps(); 
             $table->foreign('id_documento')->references('id')->on('gen_p_documento')->onDelete('set null');

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('lab_p_grupos', function (Blueprint $table) {
             $table->engine = "InnoDB";
-            $table->integer('id')->primary();
+            $table->bigIncrements('id'); 
             $table->string('codigo', 2); 
             $table->string('nombre', 60); 
             $table->boolean('habilita')->default(true); 
