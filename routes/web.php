@@ -25,17 +25,20 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('cups', CupController::class);
 
 
 
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('cups', CupController::class);
-Route::resource('listaopciones', ListaopcioneController::class);
+
+:resource('cups', CupController::class);
+Route::resource('listaopciones', ListaopcioneControlRoute:ler::class);
 Route::resource('personas', PersonaController::class);
 Route::resource('eps', EpController::class);
 Route::resource('niveles', NiveleController::class);
@@ -48,5 +51,4 @@ Route::resource('pruebas', PruebaController::class);
 Route::resource('pruebasopciones', PruebasopcioneController::class);
 Route::resource('ordenes', OrdeneController::class);
 Route::resource('resultados', ResultadoController::class);
-
 
