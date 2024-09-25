@@ -25,39 +25,54 @@
                 </div>
                 <div class="card shadow-sm">
                   <div class="card-body">
-                    <form>
-                      <div data-mdb-input-init class="form-outline mb-4">
+
+                  @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                @if (session('login_error'))
+                    <div class="alert alert-danger">{{ session('login_error') }}</div>
+                @endif
+
+                   <form action="{{ route('login') }}" method="POST">
+                    @csrf
+                    <div data-mdb-input-init class="form-outline mb-4">
                         <label class="form-label" for="tipoIdentificacion">Tipo de identificación</label>
-                        <select id="tipoIdentificacion" class="form-control w-100">
+                        <select id="tipoIdentificacion" name="tipoIdentificacion" class="form-control w-100">
                             <option value="" disabled selected>Seleccione un tipo de identificación</option>
                             <option value="cedula">Cédula de ciudadanía</option>
                             <option value="tarjeta">Tarjeta de identidad</option>
                             <option value="pasaporte">Pasaporte</option>
                             <option value="otro">Otro</option>
                         </select>
-                      </div>
+                    </div>
 
-                      <div data-mdb-input-init class="form-outline mb-4">
-                        <label class="form-label" for="form2Example22">Número de identificación</label>
-                        <input type="number" id="form2Example22" class="form-control w-100" />
-                      </div>
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <label class="form-label" for="numeroIdentificacion">Número de identificación</label>
+                        <input type="number" id="numeroIdentificacion" name="numeroIdentificacion" class="form-control w-100" required />
+                    </div>
 
-                      <div data-mdb-input-init class="form-outline mb-4">
-                        <label class="form-label" for="form2Example33">Fecha de nacimiento</label>
-                        <input type="date" id="form2Example33" class="form-control w-100" />
-                      </div>
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <label class="form-label" for="fechaNacimiento">Fecha de nacimiento</label>
+                        <input type="date" id="fechaNacimiento" name="fechaNacimiento" class="form-control w-100" required />
+                    </div>
 
-                      <div class="text-center pt-1 mb-5 pb-1">
-                        <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block fa-lg mb-4" type="button">Ingresar</button>
-                      </div>
-                    </form>
+                    <div class="text-center pt-1 mb-5 pb-1">
+                        <button type="submit" class="btn btn-primary btn-block fa-lg mb-4">Ingresar</button>
+                    </div>
+                </form>
                   </div>
                 </div>
               </div>
             </div>
             <div class="col-lg-6 d-flex align-items-center">
               <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                  <img src="{{asset('images/logoemp.png')}}" class="img-fluid mb-3" alt="Descripción de la imagen 1" />
+                  <img src="{{asset('images/logoemp.png')}}" class="img-fluid mb-3" alt="logoempresa" />
               </div>
             </div>
           </div>
