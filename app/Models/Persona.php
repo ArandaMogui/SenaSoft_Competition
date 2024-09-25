@@ -65,5 +65,9 @@ class Persona extends Model
     {
         return $this->hasMany(\App\Models\Tarjetero::class, 'id', 'id_persona');
     }
+    public function tipoId()
+    {
+        return $this->belongsTo(Listaopcione::class, 'id_tipoid');
+    }
     
 }

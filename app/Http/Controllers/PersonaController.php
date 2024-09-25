@@ -15,12 +15,12 @@ class PersonaController extends Controller
      * Display a listing of the resource.
      */
     public function index(Request $request): View
-    {
-        $personas = Persona::paginate();
+{
+    $personas = Persona::with('tipoId')->paginate();
 
-        return view('persona.index', compact('personas'))
-            ->with('i', ($request->input('page', 1) - 1) * $personas->perPage());
-    }
+    return view('persona.index', compact('personas'))
+        ->with('i', ($request->input('page', 1) - 1) * $personas->perPage());
+}
 
     /**
      * Show the form for creating a new resource.

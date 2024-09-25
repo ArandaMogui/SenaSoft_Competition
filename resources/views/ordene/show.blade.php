@@ -21,12 +21,13 @@
                     <div class="card-body bg-white">
                         
                                 <div class="form-group mb-2 mb20">
-                                    <strong>Id Documento:</strong>
-                                    {{ $ordene->id_documento }}
+                                    <strong>Tipo de orden:</strong>
+                                    {{ $ordene->documento ? $ordene->documento->nombre : 'N/A' }}
                                 </div>
                                 <div class="form-group mb-2 mb20">
                                     <strong>Id Profesional Ordena:</strong>
-                                    {{ $ordene->id_profesional_ordena }}
+                                    <td>{{ $ordene->profesional ? $ordene->profesional->codigo : 'N/A' }}</td>
+
                                 </div>
                                 <div class="form-group mb-2 mb20">
                                     <strong>Orden:</strong>
@@ -42,7 +43,7 @@
                                 </div>
                                 <div class="form-group mb-2 mb20">
                                     <strong>Profesional Externo:</strong>
-                                    {{ $ordene->profesional_externo }}
+                                    {{ $ordene->profesional_externo ? 'Sí' : 'No' }}
                                 </div>
 
                     </div>

@@ -36,7 +36,7 @@
                                     <tr>
                                         <th>No</th>
                                         
-									<th >Numeroid</th>
+									<th >N°</th>
 									<th >Apellido1</th>
 									<th >Apellido2</th>
 									<th >Nombre1</th>

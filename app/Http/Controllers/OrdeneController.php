@@ -16,11 +16,34 @@ class OrdeneController extends Controller
      */
     public function index(Request $request): View
     {
-        $ordenes = Ordene::paginate();
+        $searchOrder = trim($request->get('search_order'));
+        $startDate = $request->get('start_date');
+        $endDate = $request->get('end_date');
 
-        return view('ordene.index', compact('ordenes'))
+        // Verifica si las fechas son válidas
+        if ($startDate && $endDate && $startDate > $endDate) {
+            return redirect()->route('ordenes.index')->withErrors(['Las fechas no son válidas.']);
+        }
+
+        $ordenes = Ordene::with(['paciente', 'documento', 'profesional'])
+            ->when($searchOrder, function ($query) use ($searchOrder) {
+                $query->where('orden', 'LIKE', '%' . $searchOrder . '%');
+            })
+            ->when($startDate, function ($query) use ($startDate) {
+                $query->where('fecha', '>=', $startDate);
+            })
+            ->when($endDate, function ($query) use ($endDate) {
+                $query->where('fecha', '<=', $endDate);
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+
+        return view('ordene.index', compact('ordenes', 'searchOrder', 'startDate', 'endDate'))
             ->with('i', ($request->input('page', 1) - 1) * $ordenes->perPage());
     }
+
+
+
 
     /**
      * Show the form for creating a new resource.

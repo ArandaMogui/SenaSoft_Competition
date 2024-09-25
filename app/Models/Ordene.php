@@ -3,6 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Profesionale;
+use App\Models\Resultado;
+
+
 
 /**
  * Class Ordene
@@ -26,7 +30,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Ordene extends Model
 {
-    
+
     protected $perPage = 20;
 
     /**
@@ -43,8 +47,10 @@ class Ordene extends Model
     public function documento()
     {
         return $this->belongsTo(\App\Models\Documento::class, 'id_documento', 'id');
+        //return $this->belongsTo(Documento::class, 'id_documento');
+
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -52,7 +58,7 @@ class Ordene extends Model
     {
         return $this->belongsTo(\App\Models\Tarjetero::class, 'id_historia', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -60,7 +66,7 @@ class Ordene extends Model
     {
         return $this->belongsTo(\App\Models\Profesionale::class, 'id_profesional_ordena', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -68,5 +74,12 @@ class Ordene extends Model
     {
         return $this->hasMany(\App\Models\Resultado::class, 'id', 'id_orden');
     }
-    
+    public function paciente()
+    {
+        return $this->belongsTo(Persona::class, 'id_historia', 'id'); // Ajusta los campos según corresponda
+    }
+    public function profesional()
+{
+    return $this->belongsTo(\App\Models\Profesionale::class, 'id_profesionale_ordena', 'id_profesionale');
+}
 }
