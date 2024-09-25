@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
-
 use App\Http\Controllers\CupController;
 use App\Http\Controllers\ListaopcioneController;
 use App\Http\Controllers\PersonaController;
@@ -19,9 +19,12 @@ use App\Http\Controllers\OrdeneController;
 use App\Http\Controllers\ResultadoController;
 
 
+
 Route::get('/', function () {
     return view('Welcome');
 });
+
+Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Auth::routes();
 
