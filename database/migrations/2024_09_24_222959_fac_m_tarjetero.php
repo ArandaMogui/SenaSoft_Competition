@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('fac_m_tarjetero', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->bigIncrements('id'); 
             $table->string('historia', 20);
             $table->unsignedBigInteger('id_persona'); 
@@ -31,6 +32,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('fac_m_tarjetero');
+        
     }
 };

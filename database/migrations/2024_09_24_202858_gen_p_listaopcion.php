@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('gen_p_lista_opcion', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->bigIncrements('id'); 
             $table->string('variable', 50);            
             $table->string('descripcion', 100);
@@ -30,6 +31,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('gen_p_lista_opcion');
+
     }
 };

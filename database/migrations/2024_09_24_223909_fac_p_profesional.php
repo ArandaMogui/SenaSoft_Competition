@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('fac_p_profesional', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->bigIncrements('id'); 
             $table->string('codigo', 4);
             $table->unsignedBigInteger('id_persona')->nullable(); 
@@ -28,6 +29,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('fac_p_profesional');
+        
     }
 };

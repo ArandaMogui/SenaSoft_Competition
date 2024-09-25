@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('lab_p_grupos', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->integer('id')->primary();
             $table->string('codigo', 2); 
             $table->string('nombre', 60); 
@@ -25,6 +26,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('lab_p_grupos');
+        
     }
 };

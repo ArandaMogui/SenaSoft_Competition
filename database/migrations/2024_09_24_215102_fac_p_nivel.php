@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('fac_p_nivel', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->bigIncrements('id'); 
             $table->string('nivel', 4);
             $table->string('nombre', 50);
@@ -28,6 +29,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('fac_p_nivel');
+
     }
 };

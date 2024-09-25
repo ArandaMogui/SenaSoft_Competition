@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('fac_p_cups', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->bigIncrements('id'); 
             $table->string('codigo', 8); 
             $table->string('nombre', 500); 
@@ -25,6 +26,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('fac_p_cups');
+        
     }
 };

@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('lab_p_pruebas_opciones', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->bigIncrements('id'); 
             $table->unsignedBigInteger('id_prueba'); 
             $table->string('opcion', 250); 
@@ -29,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('lab_p_pruebas_opciones');
     }
 };
