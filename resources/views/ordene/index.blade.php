@@ -1,3 +1,5 @@
+@include('include.barra')
+
 @extends('layouts.app')
 
 @section('template_title')
@@ -34,7 +36,6 @@
         </div>
     </div>
 
-    <h3 style="font-weight: bold" class="font-weight-bold display-6">Órdenes de laboratorio</h3>
 
     <div class="container-fluid mr-1">
         <form action="{{ route('ordenes.index') }}" method="GET" class="row justify-content-end mb-3">
