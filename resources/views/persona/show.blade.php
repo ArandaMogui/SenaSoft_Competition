@@ -56,14 +56,7 @@
                                     <strong>Email:</strong>
                                     {{ $persona->email }}
                                 </div>
-                                <div class="form-group mb-2 mb20">
-                                    <strong>Id Tipoid:</strong>
-                                    {{ $persona->id_tipoid }}
-                                </div>
-                                <div class="form-group mb-2 mb20">
-                                    <strong>Id Sexobiologico:</strong>
-                                    {{ $persona->id_sexobiologico }}
-                                </div>
+
 
                     </div>
                 </div>

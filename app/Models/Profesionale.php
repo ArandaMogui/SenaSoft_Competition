@@ -57,5 +57,6 @@ class Profesionale extends Model
     {
         return $this->hasMany(\App\Models\Ordene::class, 'id', 'id_profesional_ordena');
     }
-    
+
+
 }
