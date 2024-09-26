@@ -24,24 +24,14 @@ Route::get('/', function () {
     return view('Welcome');
 });
 
+Auth::routes();
+Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
-
-Auth::routes();
-
-
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::resource('cups', CupController::class);
-
-
-
-
-Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-:resource('cups', CupController::class);
-Route::resource('listaopciones', ListaopcioneControlRoute:ler::class);
+Route::resource('cups', CupController::class);
+Route::resource('listaopciones', ListaopcioneController::class);
 Route::resource('personas', PersonaController::class);
 Route::resource('eps', EpController::class);
 Route::resource('niveles', NiveleController::class);

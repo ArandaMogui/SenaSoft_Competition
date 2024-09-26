@@ -24,7 +24,7 @@ use Illuminate\Database\Eloquent\Model;
 class Profesionale extends Model
 {
     
-    protected $perPage = 20;
+    protected $perPage = 0;
 
     /**
      * The attributes that are mass assignable.
