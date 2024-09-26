@@ -8,12 +8,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PersonaRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\Listaopcione;
 
 class PersonaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request): View
     {
         $personas = Persona::paginate();
@@ -22,19 +20,16 @@ class PersonaController extends Controller
             ->with('i', ($request->input('page', 1) - 1) * $personas->perPage());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create(): View
     {
         $persona = new Persona();
+        $tiposIdentificacion = Listaopcione::where('categoria', 'TipoIdentificacion')->get(); 
+
+        return view('persona.create', compact('persona', 'tiposIdentificacion'));
 
         return view('persona.create', compact('persona'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(PersonaRequest $request): RedirectResponse
     {
         Persona::create($request->validated());
@@ -43,9 +38,7 @@ class PersonaController extends Controller
             ->with('success', 'Persona created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    
     public function show($id): View
     {
         $persona = Persona::find($id);
@@ -53,19 +46,15 @@ class PersonaController extends Controller
         return view('persona.show', compact('persona'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id): View
     {
         $persona = Persona::find($id);
+        $tiposIdentificacion = Listaopcione::where('categoria', 'TipoIdentificacion')->get(); // Obtener tipos de identificación
 
-        return view('persona.edit', compact('persona'));
+        return view('persona.edit', compact('persona', 'tiposIdentificacion'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(PersonaRequest $request, Persona $persona): RedirectResponse
     {
         $persona->update($request->validated());

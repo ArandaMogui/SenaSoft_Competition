@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable; 
+use Illuminate\Notifications\Notifiable; 
+use Illuminate\Database\Eloquent\Factories\HasFactory; 
 
 /**
  * Class Persona
@@ -23,24 +25,45 @@ use Illuminate\Database\Eloquent\Model;
  * @property $updated_at
  *
  * @property Listaopcione $listaopcione
- * @property Listaopcione $listaopcione
  * @property Profesionale[] $profesionales
  * @property Tarjetero[] $tarjeteros
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Persona extends Model
+class Persona extends Authenticatable 
 {
-    
-    protected $perPage = 20;
+    use Notifiable; 
+    use HasFactory; 
+    protected $perPage = 10;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-    protected $fillable = ['numeroid', 'apellido1', 'apellido2', 'nombre1', 'nombre2', 'fechanac', 'direccion', 'tel_movil', 'email', 'id_tipoid', 'id_sexobiologico'];
+    protected $fillable = [
+        'numeroid', 
+        'apellido1', 
+        'apellido2', 
+        'nombre1', 
+        'nombre2', 
+        'fechanac', 
+        'direccion', 
+        'tel_movil', 
+        'email', 
+        'id_tipoid', 
+        'id_sexobiologico'
+    ];
 
+    public function getAuthIdentifier()
+    {
+        return $this->numeroid; 
+    }
+
+    public function getAuthPassword()
+    {
+        return null; 
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -49,7 +72,7 @@ class Persona extends Model
     {
         return $this->belongsTo(\App\Models\Listaopcione::class, 'id_sexobiologico', 'id');
     }  
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -65,5 +88,4 @@ class Persona extends Model
     {
         return $this->hasMany(\App\Models\Tarjetero::class, 'id', 'id_persona');
     }
-    
 }
