@@ -17,14 +17,18 @@
 </head>
 
 <body id="body">
-    <header>
-        <div class="icon__menu">
-            <i class='bx bx-menu' id="btn_open"></i>
-        </div>
-        <div class="titulo">
-            <h1>Ferretería la excelencia</h1>
-        </div>
-    </header>
+<header>
+    <div class="icon__menu" style="display:none">
+        <i class='bx bx-menu' id="btn_open"></i>
+    </div>
+    <div class="menu__toggle" id="menu_toggle">
+        <i class='bx bx-menu'></i>
+    </div>
+    <div class="titulo">
+        <h1>Órdenes de laboratorio</h1>
+    </div>
+</header>
+
 
     <div class="menu__side" id="menu_side">
 
@@ -35,7 +39,7 @@
         <div id="onlinePanel" class="online"></div>
 
         <div class="options__menu">
-            
+
             <a tooltip="tooltip" data-bs-placement="right" title="ordenes" href="/ordenes" class="{{ request()->route()->named('ordenes') ? 'selected' : '' }}">
                 <div class="option">
                     <i class="fas fa-home"></i>

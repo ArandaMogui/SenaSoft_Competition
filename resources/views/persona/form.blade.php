@@ -1,11 +1,7 @@
 <div class="row padding-1 p-1">
     <div class="col-md-12">
         
-        <div class="form-group mb-2 mb20">
-            <label for="numeroid" class="form-label">{{ __('Numeroid') }}</label>
-            <input type="text" name="numeroid" class="form-control @error('numeroid') is-invalid @enderror" value="{{ old('numeroid', $persona?->numeroid) }}" id="numeroid" placeholder="Numeroid">
-            {!! $errors->first('numeroid', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
-        </div>
+
         <div class="form-group mb-2 mb20">
             <label for="apellido1" class="form-label">{{ __('Apellido1') }}</label>
             <input type="text" name="apellido1" class="form-control @error('apellido1') is-invalid @enderror" value="{{ old('apellido1', $persona?->apellido1) }}" id="apellido1" placeholder="Apellido1">
@@ -46,16 +42,7 @@
             <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $persona?->email) }}" id="email" placeholder="Email">
             {!! $errors->first('email', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
-        <div class="form-group mb-2 mb20">
-            <label for="id_tipoid" class="form-label">{{ __('Id Tipoid') }}</label>
-            <input type="text" name="id_tipoid" class="form-control @error('id_tipoid') is-invalid @enderror" value="{{ old('id_tipoid', $persona?->id_tipoid) }}" id="id_tipoid" placeholder="Id Tipoid">
-            {!! $errors->first('id_tipoid', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
-        </div>
-        <div class="form-group mb-2 mb20">
-            <label for="id_sexobiologico" class="form-label">{{ __('Id Sexobiologico') }}</label>
-            <input type="text" name="id_sexobiologico" class="form-control @error('id_sexobiologico') is-invalid @enderror" value="{{ old('id_sexobiologico', $persona?->id_sexobiologico) }}" id="id_sexobiologico" placeholder="Id Sexobiologico">
-            {!! $errors->first('id_sexobiologico', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
-        </div>
+
 
     </div>
     <div class="col-md-12 mt20 mt-2">
