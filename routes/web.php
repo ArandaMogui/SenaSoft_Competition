@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
-
 use App\Http\Controllers\CupController;
 use App\Http\Controllers\ListaopcioneController;
 use App\Http\Controllers\PersonaController;
@@ -19,21 +19,17 @@ use App\Http\Controllers\OrdeneController;
 use App\Http\Controllers\ResultadoController;
 
 
+
 Route::get('/', function () {
     return view('Welcome');
 });
 
 Auth::routes();
-
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::resource('cups', CupController::class);
-
-
-
-Auth::routes();
+Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'show'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::resource('cups', CupController::class);
 Route::resource('listaopciones', ListaopcioneController::class);
 Route::resource('personas', PersonaController::class);
@@ -48,5 +44,4 @@ Route::resource('pruebas', PruebaController::class);
 Route::resource('pruebasopciones', PruebasopcioneController::class);
 Route::resource('ordenes', OrdeneController::class);
 Route::resource('resultados', ResultadoController::class);
-
 
